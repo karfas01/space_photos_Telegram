@@ -13,13 +13,18 @@ def download_photo(foldername, filename, url):
         file.write(response.content)
 
 foldername = 'images'
-filename = f'{foldername}/dvmn.jpeg'
-url = "https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg"
 
 
-url_SpaceX = 'https://api.spacexdata.com/v5/launches/latest'
-response_SpaceX = requests.get(url_SpaceX)
-print(response_SpaceX.json())
+def fetch_spacex_last_launch():
+    id = "5eb87d47ffd86e000604b38a"
+    url_SpaceX = f'https://api.spacexdata.com/v5/launches/{id}'
+    response_SpaceX = requests.get(url_SpaceX)
+    SpaceX_links = response_SpaceX.json()["links"]
+    SpaceX_photos = SpaceX_links["flickr"]["original"]
+    for image_number, SpaceX_photo_url in enumerate(SpaceX_photos):
+        filename = f'{foldername}/SpaceX_photo_{image_number}.jpeg'
+        download_photo(foldername, filename, SpaceX_photo_url)
 
 
-download_photo(foldername, filename, url)
+
+fetch_spacex_last_launch()
