@@ -1,5 +1,6 @@
 import requests
 import os
+import argparse
 
 from Download_images import download_photo
 
@@ -9,10 +10,10 @@ def get_extension(link):
     return extension
 
 
-def pictory_day_nasa():
+def pictory_day_nasa(count):
     payload = {
         "api_key": "5HF3znYx16boQ8oDql9SGU0swAl70NtRgA9GTTnz",
-        "count": 40
+        "count": count
     }
     url_nasa = 'https://api.nasa.gov/planetary/apod'
     response_nasa = requests.get(url_nasa, params=payload)
@@ -24,7 +25,14 @@ def pictory_day_nasa():
 
 
 def main():
-    pictory_day_nasa()
+
+    parser = argparse.ArgumentParser(
+        description='получение фото космоса'
+    )
+    parser.add_argument('--count', type= int, help='количество фото', default=40)
+    args = parser.parse_args()
+
+    pictory_day_nasa(args.count)
 
 
 if __name__ == '__main__':
