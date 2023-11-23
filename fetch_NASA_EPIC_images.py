@@ -1,15 +1,16 @@
+import os
+from dotenv import load_dotenv
 import requests
 
 from Download_images import download_photo
 
 
-def pictory_epic():
-    payload = {"api_key": "5HF3znYx16boQ8oDql9SGU0swAl70NtRgA9GTTnz"}
+def pictory_epic(key_NASA):
+    payload = {"api_key": key_NASA}
     url_epic = "https://api.nasa.gov/EPIC/api/natural/images"
     response_epic = requests.get(url_epic, params=payload)
     for epic_picture_number in range(5):
         epic_picture = response_epic.json()[epic_picture_number]
-        print(response_epic.json())
         original_name = epic_picture["image"].split("_")
         original_name_1 = original_name[0]
         original_name_3 = original_name[2]
@@ -24,7 +25,9 @@ def pictory_epic():
 
 
 def main():
-    pictory_epic()
+    load_dotenv()
+    key_NASA = os.getenv("KEY_NASA")
+    pictory_epic(key_NASA)
 
 
 if __name__ == '__main__':
