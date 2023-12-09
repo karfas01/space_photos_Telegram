@@ -6,13 +6,12 @@ from time import sleep
 from dotenv import load_dotenv
 
 
-
 def main():
     
     parser = argparse.ArgumentParser(
         description='отправка фотографий в telegram канал'
     )
-    parser.add_argument('--sleep_summaries', type= int, help='время задержни сводки фото в секундах', default=14400)
+    parser.add_argument('--sst', '--sleep_summaries_time', type= int, help='время задержни сводки фото в секундах', default=14400)
     args = parser.parse_args()
     
     load_dotenv()
@@ -34,10 +33,7 @@ def main():
                 for file_image in files:
                     bot.send_document(chat_id=chanal_name, document=open(f"images/{file_image}", "rb"))
                     sleep(4)
-        sleep(args.sleep_summaries)
-    
-
-        
+        sleep(args.sleep_summaries_time)
 
 
 if __name__ == '__main__':
