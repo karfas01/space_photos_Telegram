@@ -1,8 +1,8 @@
-# Космический Telegram
+# Космический Telegram.
 
-Программа создана для получения фотографий каосмоса из 3-х источников и парсинг их через telegram-bot в telegram канал
+Программа создана для получения фотографий каосмоса из 3-х источников и парсинг их через telegram-bot в telegram канал.
 
-## Как установить / Требования для работы
+## Как установить / Требования для работы:
 
 ### Для работы требуется:
 
@@ -18,9 +18,9 @@ KEY_NASA="token_NASA_APIs"
 KEY_BOT="token_telegram_bot"
 CHANNEL_NAME="@Telegram_Channel_Name"
 ```
-Чтобы получить token от: [NASA APIs](https://api.nasa.gov/)
+Чтобы получить token от: [NASA APIs](https://api.nasa.gov/).
 
-Чтобы получить token от telegram_bot воспользуйтесь: [BotFather](https://t.me/BotFather) и добавте Telegram бота в telegram канал по [этим](https://smmplanner.com/blog/otlozhennyj-posting-v-telegram/) пунктам - настройкам (канала)
+Чтобы получить token от telegram_bot воспользуйтесь: [BotFather](https://t.me/BotFather) и добавте Telegram бота в telegram канал по [этим](https://smmplanner.com/blog/otlozhennyj-posting-v-telegram/) пунктам - настройкам (канала).
 
 ## Как пользоваться:
 
