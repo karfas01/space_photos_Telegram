@@ -4,8 +4,8 @@ import argparse
 from Download_images import download_photo
 
 
-def fetch_spacex_last_launch(id):
-    url_spacex = f'https://api.spacexdata.com/v5/launches/{id}'
+def fetch_spacex_last_launch(img_id):
+    url_spacex = f'https://api.spacexdata.com/v5/launches/{img_id}'
     response_spacex = requests.get(url_spacex)
     response_spacex.raise_for_status()
     spacex_links = response_spacex.json()["links"]
