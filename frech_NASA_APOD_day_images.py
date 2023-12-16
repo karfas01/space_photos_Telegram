@@ -33,7 +33,7 @@ def main():
     parser = argparse.ArgumentParser(
         description='получение фото космоса'
     )
-    parser.add_argument('--c', '--count', type= int, help='количество фото', default=40)
+    parser.add_argument('--count', type= int, help='количество фото', default=40)
     args = parser.parse_args()
 
     get_nasa_pichture(key_nasa, args.count)
