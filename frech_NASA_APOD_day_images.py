@@ -11,14 +11,14 @@ def get_extension(link):
     return extension
 
 
-def pictory_day_nasa(key_NASA, count):
+def pictory_day_nasa(key_nasa, count):
     payload = {
-        "api_key": key_NASA,
+        "api_key": key_nasa,
         "count": count
     }
-    url_nasa = 'https://api.nasa.gov/planetary/apod'
-    response_nasa = requests.get(url_nasa, params=payload)
-    for image_number, img in enumerate(response_nasa.json()):
+    nasa_url = 'https://api.nasa.gov/planetary/apod'
+    nasa_api_response = requests.get(nasa_url, params=payload)
+    for image_number, img in enumerate(nasa_api_response.json()):
         img_link = img["url"]
         extension = get_extension(img_link)
         filename = f"NASA_photo_{image_number}{extension}"
@@ -28,7 +28,7 @@ def pictory_day_nasa(key_NASA, count):
 def main():
 
     load_dotenv()
-    key_NASA = os.getenv("KEY_NASA")
+    key_nasa = os.getenv("KEY_NASA")
 
     parser = argparse.ArgumentParser(
         description='получение фото космоса'
@@ -36,7 +36,7 @@ def main():
     parser.add_argument('--c', '--count', type= int, help='количество фото', default=40)
     args = parser.parse_args()
 
-    pictory_day_nasa(key_NASA, args.count)
+    pictory_day_nasa(key_nasa, args.count)
 
 
 if __name__ == '__main__':

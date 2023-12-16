@@ -5,13 +5,13 @@ from Download_images import download_photo
 
 
 def fetch_spacex_last_launch(id):
-    url_SpaceX = f'https://api.spacexdata.com/v5/launches/{id}'
-    response_SpaceX = requests.get(url_SpaceX)
-    SpaceX_links = response_SpaceX.json()["links"]
-    SpaceX_photos = SpaceX_links["flickr"]["original"]
-    for image_number, SpaceX_photo_url in enumerate(SpaceX_photos):
+    url_spacex = f'https://api.spacexdata.com/v5/launches/{id}'
+    response_spacex = requests.get(url_spacex)
+    spacex_links = response_spacex.json()["links"]
+    spacex_photos = spacex_links["flickr"]["original"]
+    for image_number, spacex_photo_url in enumerate(spacex_photos):
         filename = f'SpaceX_photo_{image_number}.jpeg'
-        download_photo(filename, SpaceX_photo_url)
+        download_photo(filename, spacex_photo_url)
 
 
 def main():

@@ -8,18 +8,20 @@ from dotenv import load_dotenv
 
 def main():
     
+    time_delay = 4
+
     parser = argparse.ArgumentParser(
         description='отправка фотографий в telegram канал'
     )
-    parser.add_argument('--sst', '--sleep_summaries_time', type= int, help='время задержни сводки фото в секундах', default=14400)
+    parser.add_argument('--pt', '--periodicity_time', type= int, help='время задержни сводки фото в секундах', default=14400)
     args = parser.parse_args()
     
     load_dotenv()
-    key_bot = os.getenv("KEY_BOT")
+    tg_bot_key = os.getenv("TG_BOT_KEY")
     chanal_name = os.getenv("CHANNEL_NAME")
 
     while True:
-        bot = telegram.Bot(token=key_bot)
+        bot = telegram.Bot(token=tg_bot_key)
         bot.send_message(text='Hi John!', chat_id=chanal_name)
         folder = os.walk('images')
         for files in folder:
@@ -30,10 +32,10 @@ def main():
                 folder, nested_folder, files = array_of_files
                 random.shuffle(files)
 
-                for file_image in files:
-                    bot.send_document(chat_id=chanal_name, document=open(f"images/{file_image}", "rb"))
-                    sleep(4)
-        sleep(args.sleep_summaries_time)
+                for tg_file_image in files:
+                    bot.send_document(chat_id=chanal_name, document=open(f"images/{tg_file_image}", "rb"))
+                    sleep(time_delay)
+        sleep(args.periodicity_time)
 
 
 if __name__ == '__main__':
