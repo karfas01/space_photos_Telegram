@@ -5,7 +5,7 @@ import requests
 from Download_images import download_photo
 
 
-def pictory_epic(key_nasa):
+def get_epic_picture(key_nasa):
 
     number_of_repetitions = 5
 
@@ -29,7 +29,7 @@ def pictory_epic(key_nasa):
 def main():
     load_dotenv()
     key_nasa = os.getenv("KEY_NASA")
-    pictory_epic(key_nasa)
+    get_epic_picture(key_nasa)
 
 
 if __name__ == '__main__':
