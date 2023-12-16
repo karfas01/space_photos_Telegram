@@ -11,7 +11,7 @@ def get_extension(link):
     return extension
 
 
-def get_nasa_picture(key_nasa, count):
+def get_nasa_pichture(key_nasa, count):
     payload = {
         "api_key": key_nasa,
         "count": count
@@ -36,7 +36,7 @@ def main():
     parser.add_argument('--c', '--count', type= int, help='количество фото', default=40)
     args = parser.parse_args()
 
-    get_nasa_picture(key_nasa, args.count)
+    get_nasa_pichture(key_nasa, args.count)
 
 
 if __name__ == '__main__':
