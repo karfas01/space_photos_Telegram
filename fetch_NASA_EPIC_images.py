@@ -12,6 +12,7 @@ def pictory_epic(key_nasa):
     payload = {"api_key": key_nasa}
     epic_url = "https://api.nasa.gov/EPIC/api/natural/images"
     response_epic = requests.get(epic_url, params=payload)
+    response_epic.raise_for_status()
     for epic_picture_number in range(number_of_repetitions):
         epic_picture = response_epic.json()[epic_picture_number]
         original_name = epic_picture["image"].split("_")

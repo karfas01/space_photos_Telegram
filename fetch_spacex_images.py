@@ -7,6 +7,7 @@ from Download_images import download_photo
 def fetch_spacex_last_launch(id):
     url_spacex = f'https://api.spacexdata.com/v5/launches/{id}'
     response_spacex = requests.get(url_spacex)
+    response_spacex.raise_for_status()
     spacex_links = response_spacex.json()["links"]
     spacex_photos = spacex_links["flickr"]["original"]
     for image_number, spacex_photo_url in enumerate(spacex_photos):
